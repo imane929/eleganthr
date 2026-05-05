@@ -1,0 +1,751 @@
+{
+    "info": {
+        "name": "ElegantHR API",
+        "description": "ElegantHR - Système de Gestion des Ressources Humaines",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8000/api"
+        },
+        {
+            "key": "token",
+            "value": ""
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "string"
+            }
+        ]
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "item": [
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/login",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"admin.system@elegantart.com\",\n    \"password\": \"password\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/logout",
+                        "header": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Dashboard",
+            "item": [
+                {
+                    "name": "Stats",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/dashboard/stats",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Employee Dashboard",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/dashboard/employee",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Department Distribution",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/dashboard/department-distribution",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Absence Trends",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/dashboard/absence-trends",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Latest Leave Requests",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/dashboard/latest-leave-requests",
+                        "header": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Employees",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/employees",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Get One",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/employees/1",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/employees",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john.doe@elegantart.com\",\n    \"phone\": \"0600000000\",\n    \"position\": \"Développeur\",\n    \"department_id\": 1,\n    \"hire_date\": \"2025-01-15\",\n    \"contract_type\": \"CDI\",\n    \"base_salary\": 15000\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Update",
+                    "request": {
+                        "method": "PUT",
+                        "url": "{{baseUrl}}/employees/1",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe Updated\",\n    \"position\": \"Senior Développeur\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{baseUrl}}/employees/1",
+                        "header": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Departments",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/departments",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Get One",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/departments/1",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/departments",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Marketing\",\n    \"description\": \"Département marketing et communication\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Update",
+                    "request": {
+                        "method": "PUT",
+                        "url": "{{baseUrl}}/departments/1",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Marketing Updated\",\n    \"description\": \"Nouveau description\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{baseUrl}}/departments/1",
+                        "header": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Leave Requests",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/leave-requests",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "List by Status (pending)",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/leave-requests?status=pending",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "List by Status (approved)",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/leave-requests?status=approved",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Get One",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/leave-requests/1",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Create (Employee)",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/leave-requests",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"leave_type\": \"annual\",\n    \"start_date\": \"2026-04-01\",\n    \"end_date\": \"2026-04-05\",\n    \"reason\": \"Vacances de printemps\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Create (Admin/RH - for employee)",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/leave-requests",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"employee_id\": 1,\n    \"leave_type\": \"annual\",\n    \"start_date\": \"2026-04-10\",\n    \"end_date\": \"2026-04-15\",\n    \"reason\": \"Congé annuel\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Update",
+                    "request": {
+                        "method": "PUT",
+                        "url": "{{baseUrl}}/leave-requests/1",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"leave_type\": \"sick\",\n    \"start_date\": \"2026-04-02\",\n    \"end_date\": \"2026-04-03\",\n    \"reason\": \"Mise à jour du motif\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Approve",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/leave-requests/1/approve",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}"
+                        }
+                    }
+                },
+                {
+                    "name": "Reject",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/leave-requests/1/reject",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"rejection_reason\": \"Raison du rejet ici...\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{baseUrl}}/leave-requests/1",
+                        "header": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Salaries",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/salaries",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Get One",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/salaries/1",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/salaries",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"employee_id\": 1,\n    \"month\": \"2026-03\",\n    \"gross_amount\": 15000,\n    \"net_amount\": 12000,\n    \"payment_date\": \"2026-03-25\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Statistics",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/salaries/statistics",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "My Salary (Employee)",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/my-salary",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "My Salaries (Employee)",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/my-salaries",
+                        "header": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Absences",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/absences",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Get One",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/absences/1",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/absences",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"employee_id\": 1,\n    \"date\": \"2026-03-15\",\n    \"type\": \"unjustified\",\n    \"reason\": \"Absence non justifiée\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Justify",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/absences/1/justify",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"justification\": \"Certificat médical\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Statistics",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/absences/statistics",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "My Absences (Employee)",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/my-absences",
+                        "header": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Notifications",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/notifications",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Mark as Read",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/notifications/1/mark-as-read",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Mark All as Read",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/notifications/mark-all-as-read",
+                        "header": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Profile",
+            "item": [
+                {
+                    "name": "Get Profile",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/profile",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Update Profile",
+                    "request": {
+                        "method": "PUT",
+                        "url": "{{baseUrl}}/profile",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"phone\": \"0600000000\",\n    \"address\": \"123 Rue Example, Casablanca\",\n    \"emergency_contact\": \"John Doe\",\n    \"emergency_phone\": \"0611111111\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Users (Admin)",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/users",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Get One",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/users/1",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/users",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"New User\",\n    \"email\": \"new.user@elegantart.com\",\n    \"password\": \"password123\",\n    \"roles\": [\"Employee\"]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Update",
+                    "request": {
+                        "method": "PUT",
+                        "url": "{{baseUrl}}/users/1",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Updated User\",\n    \"roles\": [\"HR Manager\"]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{baseUrl}}/users/1",
+                        "header": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Interns",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/interns",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Get One",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/interns/1",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/interns",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"Stagiaire\",\n    \"last_name\": \"Test\",\n    \"email\": \"stagiaire@elegantart.com\",\n    \"phone\": \"0600000000\",\n    \"department_id\": 1,\n    \"start_date\": \"2026-03-01\",\n    \"end_date\": \"2026-06-01\",\n    \"supervisor\": \"John Doe\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Warnings",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/warnings",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/warnings",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"employee_id\": 1,\n    \"type\": \"written\",\n    \"reason\": \"Retards répétés\",\n    \"issued_by\": 2\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Primes",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/primes",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/primes",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"employee_id\": 1,\n    \"type\": \"performance\",\n    \"amount\": 5000,\n    \"reason\": \"Prime de performance trimestrielle\",\n    \"date\": \"2026-03-25\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Leave Policies",
+            "item": [
+                {
+                    "name": "List All",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/leave-policies",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Get One",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/leave-policies/1",
+                        "header": []
+                    }
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/leave-policies",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"leave_type\": \"annual\",\n    \"max_days\": 20,\n    \"notice_days\": 15,\n    \"requires_attachment\": false\n}"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
